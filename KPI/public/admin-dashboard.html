@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f5f9">
+  <title>Quản trị hệ thống | KPI Portal</title>
+  <style>
+    :root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#18243a;background:#f2f5f9;font-synthesis:none;--navy:#193b70;--blue:#3869b5;--muted:#69778d;--line:#e3e9f1}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh}.shell{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:#172f55;color:#fff;padding:25px 18px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:11px;padding:0 8px 28px;border-bottom:1px solid rgba(255,255,255,.12)}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#fff;color:var(--navy);font-weight:800}.brand-title{font-size:17px;font-weight:750}.brand-title span{color:#9dbcf1}.section-label{margin:26px 10px 10px;color:#a8b8d1;font-size:11px;font-weight:750;letter-spacing:.1em}.nav-item{display:flex;align-items:center;gap:12px;padding:11px 12px;margin:3px 0;border-radius:8px;color:#e5edfa;text-decoration:none;font-size:14px}.nav-item.active,.nav-item:hover{background:rgba(255,255,255,.12);color:#fff}.nav-icon{width:20px;text-align:center}.sidebar-foot{margin-top:auto;padding:18px 10px 3px;color:#a8b8d1;font-size:12px;line-height:1.5}
+    .main{min-width:0}.topbar{height:70px;padding:0 clamp(20px,4vw,54px);display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--line)}.crumb{font-size:13px;color:var(--muted)}.crumb strong{color:#26364d}.admin-pill{padding:7px 11px;border-radius:20px;background:#eef3fb;color:#305998;font-size:12px;font-weight:700}.content{max-width:1120px;margin:0 auto;padding:38px clamp(20px,4vw,54px) 56px}.eyebrow{margin:0 0 8px;color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}h1{margin:0;font-size:29px;letter-spacing:-.035em}.subhead{margin:9px 0 28px;color:var(--muted);font-size:14px}
+    .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(290px,.85fr);gap:20px;align-items:start}.card{padding:24px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 5px 18px rgba(29,54,88,.035)}.card h2{margin:0 0 6px;font-size:17px}.card-desc{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.5}.field-grid{display:grid;grid-template-columns:1fr 160px;gap:15px}.field{margin-bottom:15px}.field.full{grid-column:1/-1}label{display:block;margin:0 0 7px;color:#37465c;font-size:12px;font-weight:700}input,select,textarea{width:100%;border:1px solid #ccd6e3;border-radius:8px;padding:11px 12px;background:#fff;color:#18243a;font:inherit;font-size:14px;outline:0}input,select{height:43px}textarea{min-height:78px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#5380c2;box-shadow:0 0 0 3px rgba(56,105,181,.12)}.button{min-height:42px;padding:0 16px;border:0;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:#fff;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.button:hover{background:#244f8c}.button:disabled{opacity:.6;cursor:wait}.button.secondary{background:#edf2f8;color:#29476f}.button.secondary:hover{background:#e1e9f3}.button-row{display:flex;gap:10px;flex-wrap:wrap}.period-box{padding:18px;border:1px solid var(--line);border-radius:10px;background:#fafbfd}.period-current{margin:0 0 5px;font-size:18px;font-weight:750}.period-note{margin:0 0 17px;color:var(--muted);font-size:13px}.divider{height:1px;margin:21px 0;background:var(--line)}.report-card{margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.report-copy h2{margin-bottom:5px}.report-copy p{margin:0;color:var(--muted);font-size:13px}.message{display:none;margin:16px 0 0;padding:11px 13px;border-radius:8px;font-size:13px;line-height:1.45}.message.visible{display:block}.message.error{border:1px solid #f2caca;background:#fff2f1;color:#a52d26}.message.success{border:1px solid #c6e6d2;background:#effaf3;color:#1e7040}.csrf-foot{margin-top:25px;color:#8a95a5;font-size:11px}
+    @media(max-width:860px){.shell{grid-template-columns:1fr}.sidebar{padding:14px 18px;flex-direction:row;align-items:center;gap:16px}.brand{padding:0;border:0}.section-label,.nav-item,.sidebar-foot{display:none}.grid{grid-template-columns:1fr}.topbar{height:58px}}@media(max-width:520px){.content{padding-top:26px}.card{padding:19px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.report-card{align-items:flex-start;flex-direction:column}h1{font-size:25px}}
+  </style>
+</head>
+<body data-auth-guard="true" data-required-role="Admin">
+  <div class="shell">
+    <aside class="sidebar" aria-label="Điều hướng quản trị">
+      <div class="brand"><div class="brand-mark">K</div><div class="brand-title">KPI<span>Portal</span></div></div>
+      <p class="section-label">QUẢN TRỊ</p>
+      <a class="nav-item active" href="#overview"><span class="nav-icon">▦</span>Tổng quan</a>
+      <a class="nav-item" href="#criteria"><span class="nav-icon">☷</span>Bộ tiêu chí</a>
+      <a class="nav-item" href="#period"><span class="nav-icon">◷</span>Kỳ đánh giá</a>
+      <a class="nav-item" href="#reports"><span class="nav-icon">▤</span>Báo cáo</a>
+      <div class="sidebar-foot">Phòng Tổ chức cán bộ<br>Không gian quản trị hệ thống</div>
+    </aside>
+    <main class="main" id="overview">
+      <header class="topbar"><div class="crumb">KPI Portal <span aria-hidden="true">/</span> <strong>Quản trị hệ thống</strong></div><span class="admin-pill">ADMIN</span></header>
+      <section class="content">
+        <p class="eyebrow">Phòng Tổ chức cán bộ</p>
+        <h1>Quản trị dữ liệu KPI</h1>
+        <p class="subhead">Cấu hình bộ tiêu chí, khởi tạo kỳ đánh giá và xuất báo cáo tổng hợp.</p>
+        <div class="grid">
+          <section class="card" id="criteria">
+            <h2>Thêm tiêu chí KPI</h2>
+            <p class="card-desc">Trọng số các tiêu chí đang áp dụng không được vượt quá 100%.</p>
+            <form id="criteria-form">
+              <div class="field-grid">
+                <div class="field"><label for="criterion-name">Tên tiêu chí</label><input id="criterion-name" name="name" maxlength="200" placeholder="Ví dụ: Năng lực chuyên môn" required></div>
+                <div class="field"><label for="criterion-weight">Trọng số (%)</label><input id="criterion-weight" name="weight" type="number" min="0.01" max="100" step="0.01" placeholder="20" required></div>
+                <div class="field full"><label for="criterion-target">Loại đối tượng</label><select id="criterion-target" name="target_type"><option value="official">Cán bộ, công chức</option><option value="manager">Quản lý</option><option value="all">Tất cả đối tượng</option></select></div>
+                <div class="field full"><label for="criterion-description">Mô tả (không bắt buộc)</label><textarea id="criterion-description" name="description" placeholder="Mô tả cách đánh giá tiêu chí"></textarea></div>
+              </div>
+              <button class="button" id="criteria-submit" type="submit">＋ Thêm tiêu chí</button>
+              <div class="message" id="criteria-message" role="status" aria-live="polite"></div>
+            </form>
+          </section>
+          <section class="card" id="period">
+            <h2>Kỳ đánh giá</h2>
+            <p class="card-desc">Tạo phiếu nháp cho cán bộ đang hoạt động theo kỳ tháng hiện tại.</p>
+            <div class="period-box">
+              <p class="period-current" id="current-period-label">Tháng hiện tại</p>
+              <p class="period-note">Hệ thống sẽ khởi tạo phiếu và chi tiết tiêu chí cho từng cán bộ.</p>
+              <button class="button" id="open-period-button" type="button">Khởi tạo kỳ đánh giá tháng này</button>
+              <div class="message" id="period-message" role="status" aria-live="polite"></div>
+            </div>
+          </section>
+        </div>
+        <section class="card report-card" id="reports">
+          <div class="report-copy"><h2>Xuất báo cáo tổng hợp</h2><p>Tải báo cáo CSV gồm phòng ban, tổng điểm và xếp loại KPI.</p></div>
+          <button class="button secondary" id="export-report-button" type="button">⇩ Xuất báo cáo CSV</button>
+        </section>
+        <p class="csrf-foot">Các thao tác quản trị được xác thực bằng phiên đăng nhập và CSRF token.</p>
+      </section>
+    </main>
+  </div>
+  <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/admin.js" defer></script>
+</body>
+</html>
